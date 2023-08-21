@@ -1,0 +1,30 @@
+{
+  "name": "mytinerary-back",
+  "version": "1.0.0",
+  "description": "My aplicacion de back",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "users": "node ./models/data/users.js",
+    "cities": "node ./models/data/cities.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sobolm20/ap_mern.git"
+  },
+  "author": "Matias Sobol",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sobolm20/ap_mern/issues"
+  },
+  "homepage": "https://github.com/sobolm20/ap_mern#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^7.4.3"
+  }
+}
+
