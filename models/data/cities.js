@@ -13,7 +13,7 @@ const cities = [
         population: "7413000000",
         dishes: "Curry Fish Balls",
         interest: "No",
-        admin_id: ""
+       admin_id: "fran@mh.com"
     },
     {
         city: "Sydney",
@@ -24,7 +24,7 @@ const cities = [
         population: "5312000000",
         dishes: "Meatloaf",
         interest: "No",
-        admin_id: ""
+        admin_id: "fran@mh.com"
     },
     {
         city: "París",
@@ -35,7 +35,7 @@ const cities = [
         population: "2161000000",
         dishes: "soupe a l'oignon",
         interest: "No",
-        admin_id: ""
+        admin_id: "cin@mh.com"
     },
     {
         city: "Bangkok",
@@ -46,7 +46,7 @@ const cities = [
         population: "10539000000",
         dishes: "Pad Thai",
         interest: "The Grand Palace in Bangkok",
-        admin_id: ""
+        admin_id: "fran@mh.com"
     },
     {
         city: "Los Angeles",
@@ -57,7 +57,7 @@ const cities = [
         population: "3849000000",
         dishes: "French Dip Sandwich",
         interest: "No",
-        admin_id: ""
+        admin_id: "igna@mh.com"
     },
     {
         city: "Londres",
@@ -68,7 +68,7 @@ const cities = [
         population: "8982000000",
         dishes: "Fish and chips",
         interest: "No",
-        admin_id: ""
+        admin_id: "cin@mh.com"
     },
     {
         city: "Kuala Lumpur",
@@ -79,7 +79,7 @@ const cities = [
         population: "1808000000",
         dishes: "Laksa Soup",
         interest: "No",
-        admin_id: ""
+        admin_id: "fran@mh.com"
     },
     {
         city: "San Francisco",
@@ -90,7 +90,7 @@ const cities = [
         population: "815201",
         dishes: "Clam Chowder Soup",
         interest: "No",
-        admin_id: ""
+        admin_id: "igna@mh.com"
     },
     {
         city: "Singapur City",
@@ -101,7 +101,7 @@ const cities = [
         population: "5454000000",
         dishes: "Bak Chor Mee",
         interest: "No",
-        admin_id: ""
+        admin_id: "fran@mh.com"
     },
     {
         city: "Ciudad de México",
@@ -112,7 +112,7 @@ const cities = [
         population: "126700000",
         dishes: "Enchiladas",
         interest: "No",
-        admin_id: ""
+        admin_id: "igna@mh.com"
     },
     {
         city: "Barcelona",
@@ -123,7 +123,7 @@ const cities = [
         population: "1620000",
         dishes: "Suquet de Peix",
         interest: "No",
-        admin_id: ""
+        admin_id: "cin@mh.com"
     },
     {
         city: "Osaka",
@@ -134,7 +134,7 @@ const cities = [
         population: "2691000000",
         dishes: "Takoyaki",
         interest: "No",
-        admin_id: ""
+        admin_id: "fran@mh.com"
     },
     {
         city: "Dubai",
@@ -145,7 +145,7 @@ const cities = [
         population: "3331000000",
         dishes: "Hummus",
         interest: "No",
-        admin_id: ""
+        admin_id: "fran@mh.com"
     },
     {
         city: "Cuzco",
@@ -156,7 +156,7 @@ const cities = [
         population: "428450",
         dishes: "Chiri Uchu",
         interest: "No",
-        admin_id: ""
+        admin_id: "igna@mh.com"
     },
     {
         city: "Roma",
@@ -167,24 +167,36 @@ const cities = [
         population: "2873000000",
         dishes: "Carpaccio",
         interest: "No",
-        admin_id: ""
+        admin_id: "cin@mh.com"
     }
     ]
 
-async function createCities(arrayCities) {
-try {
-    await connect(process.env.DATABASE_URL)
-    for (let city of arrayCities){
-        let user = await User.findOne({ mail:city.admin_id})
-        let admin_id = await user._id
-        city.admin_id = admin_id
-        await City.create(city)
-    }
-    console.log('done!')
-} catch (error) {
-    console.log(error)
-}
-}
+    async function createCities(arrayCities) {
+        try {
+            await connect(process.env.DATABASE_URL)
+            for (let city of arrayCities){
+                let user = await User.findOne({ mail:city.admin_id})
+                let admin_id = await user._id
+                city.admin_id = admin_id
+                await City.create(city)
+            }
+            console.log('done!')
+        } catch (error) {
+            console.log(error)
+        }
+        }
+        
+        
+        createCities (cities)
 
 
-createCities (cities)
+
+
+    // connect(process.env.DATABASE_URL)
+    // .then(()=>{
+    //     City.insertMany(cities)
+    //     console.log('done!');
+    // })
+    // .catch(err=>console.log(err))
+
+

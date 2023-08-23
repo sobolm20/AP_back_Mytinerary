@@ -1,5 +1,6 @@
 import { Schema, model, Types } from "mongoose";
 
+let collection = "cities"
 const citySchema = Schema({
     city: { type: String, required: true },
     country: { type: String, required: true },
@@ -15,6 +16,6 @@ const citySchema = Schema({
 })
 
 
-const City = model('city', citySchema)
+const City = model(collection, citySchema)
 
 export default City
