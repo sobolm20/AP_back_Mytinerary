@@ -90,6 +90,21 @@ const citiesController = {
             success = false;
             next(err)
         }
+    },
+    getCarousel: async (req, res, next) =>{      
+        try {
+            const all = await City.find({}, 'image city').limit(12)
+            let count = await City.countDocuments()
+            return res.status(200).json({
+                success: true,
+                message: 'cities to show on carousel',
+                city_carousel: all,
+                count
+            })     
+        } catch (err) {
+            success = false;
+            next(err)
+        }
     }
 }
 
